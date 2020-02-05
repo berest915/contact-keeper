@@ -6,7 +6,11 @@
 //* If you do not want to build the API, you can clone it and skip this section and the next section to continue on.
 //? https://github.com/bradtraversy/contact_keeper_api
 
+//! **For a complete list of standard validators and their options**
+//? https://github.com/validatorjs/validator.js#validators
 
+//! mongodb & mongoose cheatsheet
+//? https://docs.mongodb.com/manual/reference/method/db.collection.save/
 
 
 
