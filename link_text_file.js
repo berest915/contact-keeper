@@ -9,7 +9,7 @@
 //! **For a complete list of standard validators and their options**
 //? https://github.com/validatorjs/validator.js#validators
 
-//! mongodb & mongoose cheatsheet
+//! mongodb & mongoose 
 //? https://docs.mongodb.com/manual/reference/method/db.collection.save/
 
 

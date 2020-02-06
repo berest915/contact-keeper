@@ -12,9 +12,12 @@ module.exports = (req, res, next) => {
         //! extract payload
         //* in production, the jwtSecret should be random-generated string || customised ?
         const decoded = jwt.verify(token, config.get('jwtSecret'))
+        //! only extract user into req.user
         req.user = decoded.user
+       
         next()
     } catch (err) {
         res.status(401).json({msg: 'Invalid token '})
     }
 }
+//? auth for each crud operation is individual, allow same user from other device to access 

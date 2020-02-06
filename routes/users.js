@@ -42,7 +42,7 @@ router.post('/', [
         //! assign mongodb Object_Id into jwt   #doubt:: why need token for registration
         const payload = { user: { id: user.id } }
         jwt.sign(payload, config.get('jwtSecret'), {
-            expiresIn: 7200
+            expiresIn: 720000
         }, (err, token) => {
             if (err) throw err
             res.json({ token })
