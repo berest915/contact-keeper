@@ -1,3 +1,10 @@
+//! npm i @server
+//? npm i express bcryptjs jsonwebtoken config express-validator mongoose
+//? npm i -D nodemon concurrently 
+
+//! npm i @client
+//? npm i axios react-router-dom uuid react-transition-group
+
 //! Final Code Repo:
 //? https://github.com/bradtraversy/contact-keeper
 
