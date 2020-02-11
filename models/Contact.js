@@ -18,7 +18,7 @@ const ContactSchema = mongoose.Schema({
     },
     phone: {
         type: String,
-        required: () =>  { this.email===undefined; },    //* may jz return !this.email
+        required: () => this.email===undefined    //* may jz return !this.email
     },
     type: {
         type: String,

@@ -33,7 +33,7 @@ router.post(
         auth,
         check('name', 'Name is required')
             .not()
-            .isEmpty(),
+            .isEmpty()
     ],
     async (req, res) => {
         const errors = validationResult(req)
@@ -42,13 +42,13 @@ router.post(
         }
 
         const { name, email, phone, type } = req.body
+        console.log(email);
         let isNameExist = await Contact.findOne({ name })
         if (isNameExist) {
             return res.status(400).json({
                 msg: 'unable to add:: name exactly same with existing contacts'
             })
         }
-
         try {
             const newContact = new Contact({
                 name,
