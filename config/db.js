@@ -1,7 +1,7 @@
 // use mongoose to connect to db
 const mongoose = require('mongoose')
 const config = require('config')
-
+//* config.get({ any_requiredParameter_from( "./" ) })
 const db = config.get('mongoURI')
 
 const connectDB = async () => {
