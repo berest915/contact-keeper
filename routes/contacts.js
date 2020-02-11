@@ -36,13 +36,13 @@ router.post(
             .isEmpty()
     ],
     async (req, res) => {
+        const { name, email, phone, type } = req.body
+        let reqEmail = email
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
         }
 
-        const { name, email, phone, type } = req.body
-        console.log(email);
         let isNameExist = await Contact.findOne({ name })
         if (isNameExist) {
             return res.status(400).json({

@@ -14,11 +14,11 @@ const ContactSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        required: false,
+        required: false
     },
     phone: {
         type: String,
-        required: () => this.email===undefined    //* may jz return !this.email
+        required: function() { return this.email === undefined } //* may jz return !this.email  **Somehow arrow fn doesn't return correctly
     },
     type: {
         type: String,
@@ -27,6 +27,6 @@ const ContactSchema = mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    },
+    }
 })
 module.exports = mongoose.model('contact', ContactSchema)

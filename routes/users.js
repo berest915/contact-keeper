@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 //! access user_validate_schema
 const config = require('config') //! get mongoURI
-const _User = require('../models/User')
+const User = require('../models/User')
 const { check, validationResult } = require('express-validator')
 
 // @route   POST api/users
@@ -34,12 +34,12 @@ router.post(
 
         const { name, email, password } = req.body
         try {
-            let user = await _User.findOne({ email })
+            let user = await User.findOne({ email })
             if (user) {
                 return res.status(400).json({ msg: 'email already exist' })
             }
 
-            user = new _User({ name, email, password })
+            user = new User({ name, email, password })
             // console.log(user.date)
             // console.log(user.date.toString())
 
