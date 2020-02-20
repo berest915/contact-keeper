@@ -60,19 +60,17 @@ const AuthState = (props) => {
       loadUser()
     } catch (err) {
       if (Array.isArray(err.response.data.errors)) {
-        let errArr = err.response.data.errors.map(error => error.msg)
-     
+        let errArr
+        // map array of objects into arrays, since obj not valid as React Child
+        errArr = err.response.data.errors
+
         dispatch({
           type: REGISTER_FAIL,
           payload: errArr
         })
-
       } else {
-        console.log('else')
-        dispatch({
-          type: REGISTER_FAIL,
-          payload: err.response.data.msg
-        })
+        console.log('prob may at server, res.json()')
+        console.error(err)
       }
     }
   }
@@ -84,20 +82,28 @@ const AuthState = (props) => {
         'Content-Type': 'application/json'
       }
     }
-
     try {
       //! we have 'proxy' value in package.json so that no need to enter localhost:PORT for reqs we made
-      const res = await axios.post('/api/auth', formData, config)
+      const res = await axios.post('/api/users', formData, config)
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
       })
       loadUser()
     } catch (err) {
-      dispatch({
-        type: LOGIN_FAIL,
-        payload: err.response.data.msg
-      })
+      if (Array.isArray(err.response.data.errors)) {
+        let errArr
+        // map array of objects into arrays, since obj not valid as React Child
+        errArr = err.response.data.errors
+
+        dispatch({
+          type: LOGIN_FAIL,
+          payload: errArr
+        })
+      } else {
+        console.log('prob may at server, res.json()')
+        console.error(err)
+      }
     }
   }
 

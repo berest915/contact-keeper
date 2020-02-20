@@ -10,7 +10,6 @@ const Register = (props) => {
   const { registerUser, isAuth, clearError, error } = authContext
 
   useEffect(() => {
-    
     if (isAuth) {
       // redirect
       props.history.push('/')
@@ -77,7 +76,7 @@ const Register = (props) => {
             name="password"
             value={password}
             onChange={onChange}
-            // minLength="5"
+            minLength="5"
           />
         </div>
 

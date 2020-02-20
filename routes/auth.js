@@ -47,13 +47,13 @@ router.post(
             if (!user) {
                 return res
                     .status(400)
-                    .json({ msg: `not existing account for ${email}` })
+                    .json({ erros: errors.array() })
             }
             const isMatch = await bcrypt.compare(password, user.password)
             if (!isMatch) {
                 return res
                     .status(400)
-                    .json({ msg: 'Invalid Credentials - password unmatch' })
+                    .json({ errors: errors.array() })
             }
             //! jwt token
             const payload = {
@@ -72,7 +72,7 @@ router.post(
             )
         } catch (err) {
             console.error(err.message)
-            res.status(500).send('server error')
+            res.status(500).json({erros: errors.array()})
         }
     }
 )
