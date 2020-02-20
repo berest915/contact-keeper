@@ -8,3 +8,4 @@ const setAuthToken = token => {
   }
 }
 export default setAuthToken
+//! if token in LS, any axios req would have def header 'x-auth-token' with token value

@@ -24,9 +24,9 @@ const AuthState = (props) => {
   }
   const [state, dispatch] = useReducer(AuthReducer, initialState)
 
-  // load user
+  //! load user - get logged in user
   const loadUser = async () => {
-    //! load token into default headers
+    // default headers
     if (localStorage.token) {
       setAuthToken(localStorage.token)
     }
@@ -42,7 +42,7 @@ const AuthState = (props) => {
     }
   }
 
-  // register user
+  //! register user
   const registerUser = async (formData) => {
     const config = {
       headers: {
@@ -59,14 +59,25 @@ const AuthState = (props) => {
       })
       loadUser()
     } catch (err) {
-      dispatch({
-        type: REGISTER_FAIL,
-        payload: err.response.data.msg
-      })
+      if (Array.isArray(err.response.data.errors)) {
+        let errArr = err.response.data.errors.map(error => error.msg)
+     
+        dispatch({
+          type: REGISTER_FAIL,
+          payload: errArr
+        })
+
+      } else {
+        console.log('else')
+        dispatch({
+          type: REGISTER_FAIL,
+          payload: err.response.data.msg
+        })
+      }
     }
   }
 
-  // login user
+  //! login user
   const loginUser = async (formData) => {
     const config = {
       headers: {
@@ -89,9 +100,11 @@ const AuthState = (props) => {
       })
     }
   }
-  // logout user
+
+  //! logout user
   const logoutUser = () => {}
-  // clear errors
+
+  //! clear errors
   const clearError = () => dispatch({ type: CLEAR_ERROR })
 
   return (

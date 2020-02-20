@@ -9,8 +9,8 @@ const Home = () => {
   const authContext = useContext(AuthContext)
 
   useEffect(() => {
-    // return 401 whenever direct to / which called this component
-    // then it loaduser dispatch AUTH_ERROR
+    // return 401 whenever direct to / which re-render this component
+    // then loaduser dispatch AUTH_ERROR
     authContext.loadUser()
     // eslint-disable-next-line
   }, [])

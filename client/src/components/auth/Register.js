@@ -10,16 +10,20 @@ const Register = (props) => {
   const { registerUser, isAuth, clearError, error } = authContext
 
   useEffect(() => {
+    
     if (isAuth) {
       // redirect
       props.history.push('/')
     }
-    if (error === 'email already exist') {
+    // it should not be string-specific
+    if (error) {
       setAlert(error, 'danger')
       clearError()
     }
     // eslint-disable-next-line
-  }, [error, isAuth, props.history]) //if add clearError || setAlert cause infinite loop
+  }, [error, isAuth, props.history])
+  //? if add clearError || setAlert as dep may cause infinite loop
+  //? is that any fn call shouldn't be dep ?
 
   const [user, setUser] = useState({
     name: '',
@@ -37,7 +41,6 @@ const Register = (props) => {
   }
   const onSubmit = (e) => {
     e.preventDefault()
-    //? whatif i remove test if , let server to validate?
     if (name === '' || email === '' || password === '') {
       setAlert('Please enter all fields', 'danger')
     } else if (password !== password2) {
@@ -48,7 +51,6 @@ const Register = (props) => {
         email,
         password
       })
-      // clearError()   #delete
     }
   }
 
@@ -75,7 +77,7 @@ const Register = (props) => {
             name="password"
             value={password}
             onChange={onChange}
-            minLength="5"
+            // minLength="5"
           />
         </div>
 
