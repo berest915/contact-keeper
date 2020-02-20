@@ -38,6 +38,7 @@ const Login = (props) => {
     if (email === '') {
       setAlert('please fill in the fields', 'danger')
     } else {
+      console.log('login server');
       loginUser({
         email,
         password

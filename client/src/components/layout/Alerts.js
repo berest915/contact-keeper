@@ -5,25 +5,37 @@ const Alerts = () => {
   const { alerts } = useContext(AlertContext)
   // console.log(Array.isArray(alerts[0]));
   // console.log(alerts)
-  
+
   return (
     <Fragment>
       {alerts.length > 0 &&
         alerts.map((alert) => (
-          
           <div key={alert.id} className={`alert alert-${alert.type}`}>
-            {alert.msg.length > 1 ? (
+            {/* //* if more than 1 alert message */}
+
+            {!Array.isArray(alert.msg) ? (
               <Fragment>
-                {alert.msg.map((each_msg, index) => (
-                  //* When don’t have stable IDs for rendered items, use index as a key
-                  <div key={index}>
-                    <i className="fas fa-info-circle" style={iStyle}></i> {each_msg}
-                  </div>
-                ))}
+                <i className="fas fa-info-circle" style={iStyle}></i>
+                {alert.msg}
               </Fragment>
             ) : (
               <Fragment>
-                <i className="fas fa-info-circle" style={iStyle}></i> {alert.msg}
+                {alert.msg.length > 1 ? (
+                  <Fragment>
+                    {alert.msg.map((each_msg, index) => (
+                      // * When don’t have stable IDs for rendered items, use index as a key
+                      <div key={index}>
+                        <i className="fas fa-info-circle" style={iStyle}></i>{' '}
+                        {each_msg}
+                      </div>
+                    ))}
+                  </Fragment>
+                ) : (
+                  <Fragment>
+                    <i className="fas fa-info-circle" style={iStyle}></i>{' '}
+                    {alert.msg}
+                  </Fragment>
+                )}
               </Fragment>
             )}
           </div>

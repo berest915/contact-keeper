@@ -60,12 +60,24 @@ const AuthState = (props) => {
       loadUser()
     } catch (err) {
       if (Array.isArray(err.response.data.errors)) {
+        // const isValidationResultJson = err.response.data.errors[0].value
         let errArr
-        // map array of objects into arrays, since obj not valid as React Child
-        errArr = err.response.data.errors.map((error) => error.msg)
+        const isErrorsArray = err.response.data.errors[0].hasOwnProperty(
+          'value'
+        )
+        if (isErrorsArray) {
+          errArr = err.response.data.errors.map((error) => error.msg)
+        } else {
+          if (err.response.data.errors.length > 1) {
+            // map array of objects into arrays, since obj not valid as React Child
+            errArr = err.response.data.errors.map((error) => error.msg)
+          } else {
+            errArr = err.response.data.errors
+          }
+        }
 
         dispatch({
-          type: REGISTER_FAIL,
+          type: LOGIN_FAIL,
           payload: errArr
         })
       } else {
@@ -92,9 +104,21 @@ const AuthState = (props) => {
       loadUser()
     } catch (err) {
       if (Array.isArray(err.response.data.errors)) {
+        // const isValidationResultJson = err.response.data.errors[0].value
         let errArr
-        // map array of objects into arrays, since obj not valid as React Child
-        errArr = err.response.data.errors.map((error) => error.msg)
+        const isErrorsArray = err.response.data.errors[0].hasOwnProperty(
+          'value'
+        )
+        if (isErrorsArray) {
+          errArr = err.response.data.errors.map((error) => error.msg)
+        } else {
+          if (err.response.data.errors.length > 1) {
+            // map array of objects into arrays, since obj not valid as React Child
+            errArr = err.response.data.errors.map((error) => error.msg)
+          } else {
+            errArr = err.response.data.errors
+          }
+        }
 
         dispatch({
           type: LOGIN_FAIL,
@@ -133,3 +157,29 @@ const AuthState = (props) => {
   )
 }
 export default AuthState
+
+// if (Array.isArray(err.response.data.errors)) {
+//   //? const isValidationResultJson = err.response.data.errors[0].value
+//   let errArr
+//   const isErrorsArray = err.response.data.errors[0].hasOwnProperty(
+//     'value'
+//   )
+//   if (isErrorsArray) {
+//     errArr = err.response.data.errors.map((error) => error.msg)
+//   } else {
+//     if (err.response.data.errors.length > 1) {
+//       //? map array of objects into arrays, since obj not valid as React Child
+//       errArr = err.response.data.errors.map((error) => error.msg)
+//     } else {
+//       errArr = err.response.data.errors
+//     }
+//   }
+
+//   dispatch({
+//     type: LOGIN_FAIL,
+//     payload: errArr
+//   })
+// } else {
+//   console.log('prob may at server, res.json()')
+//   console.error(err)
+// }

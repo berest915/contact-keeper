@@ -76,7 +76,7 @@ const Register = (props) => {
             name="password"
             value={password}
             onChange={onChange}
-            minLength="5"
+            // minLength="5"
           />
         </div>
 
