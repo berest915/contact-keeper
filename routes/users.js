@@ -3,7 +3,7 @@ const router = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 //! access user_validate_schema
-const config = require('config') //! get mongoURI
+const config = require('config') // get mongoURI
 const User = require('../models/User')
 const { check, validationResult } = require('express-validator')
 
@@ -48,7 +48,7 @@ router.post(
             //! to save into db
             await user.save()
 
-            //! assign mongodb Object_Id into jwt   #doubt:: why need token for registration
+            //? assign mongodb Object_Id into jwt   #doubt:: why need token for registration
             const payload = { user: { id: user.id } }
             jwt.sign(
                 payload,

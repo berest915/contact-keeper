@@ -19,4 +19,5 @@ module.exports = (req, res, next) => {
         res.status(401).json({ msg: 'Invalid token ' })
     }
 }
-//? auth for each crud operation is individual, allow same user from other device to access
+// module.exports = auth
+//? jwt for each device is individual, allow same user able to access to the system by using different jwt
