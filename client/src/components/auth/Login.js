@@ -69,6 +69,7 @@ const Login = (props) => {
             name="password"
             value={password}
             onChange={onChange}
+            minLength = '5'
             required
           />
         </div>

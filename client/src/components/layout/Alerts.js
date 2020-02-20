@@ -17,18 +17,21 @@ const Alerts = () => {
                 {alert.msg.map((each_msg, index) => (
                   //* When don’t have stable IDs for rendered items, use index as a key
                   <div key={index}>
-                    <i className="fas fa-info-circle"></i> {each_msg}
+                    <i className="fas fa-info-circle" style={iStyle}></i> {each_msg}
                   </div>
                 ))}
               </Fragment>
             ) : (
               <Fragment>
-                <i className="fas fa-info-circle"></i> {alert.msg}
+                <i className="fas fa-info-circle" style={iStyle}></i> {alert.msg}
               </Fragment>
             )}
           </div>
         ))}
     </Fragment>
   )
+}
+const iStyle = {
+  marginRight: '1rem'
 }
 export default Alerts

@@ -31,15 +31,16 @@ router.post(
     '/',
     [
         //! check if match-credential between req & db
-        check('email', 'Email is required').isEmail(),
+        check('email', 'Email is either empty or invalid').isEmail(),
         check('password', 'Password is required').exists()
     ],
     async (req, res) => {
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
-            res.status(400).json({ errors: errors.array() })
+         
+            return res.status(400).json({ errors: errors.array() })
         }
-
+        
         //! check if credentials are valid
         const { email, password } = req.body
         try {
@@ -47,13 +48,13 @@ router.post(
             if (!user) {
                 return res
                     .status(400)
-                    .json({ erros: errors.array() })
+                    .json({ errors: [`Not existing account for ${email}`] })
             }
             const isMatch = await bcrypt.compare(password, user.password)
             if (!isMatch) {
                 return res
                     .status(400)
-                    .json({ errors: errors.array() })
+                    .json({ errors: ['Password not matched'] })
             }
             //! jwt token
             const payload = {

@@ -62,7 +62,7 @@ const AuthState = (props) => {
       if (Array.isArray(err.response.data.errors)) {
         let errArr
         // map array of objects into arrays, since obj not valid as React Child
-        errArr = err.response.data.errors
+        errArr = err.response.data.errors.map((error) => error.msg)
 
         dispatch({
           type: REGISTER_FAIL,
@@ -84,7 +84,7 @@ const AuthState = (props) => {
     }
     try {
       //! we have 'proxy' value in package.json so that no need to enter localhost:PORT for reqs we made
-      const res = await axios.post('/api/users', formData, config)
+      const res = await axios.post('/api/auth', formData, config)
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
@@ -94,7 +94,7 @@ const AuthState = (props) => {
       if (Array.isArray(err.response.data.errors)) {
         let errArr
         // map array of objects into arrays, since obj not valid as React Child
-        errArr = err.response.data.errors
+        errArr = err.response.data.errors.map((error) => error.msg)
 
         dispatch({
           type: LOGIN_FAIL,
