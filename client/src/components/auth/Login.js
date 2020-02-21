@@ -9,6 +9,10 @@ const Login = (props) => {
   const { setAlert } = alertContext
   const { loginUser, isAuth, clearError, error } = authContext
 
+  if(localStorage.token){
+    props.history.push('/')
+    }
+
   useEffect(() => {
     if (isAuth) {
       // redirect

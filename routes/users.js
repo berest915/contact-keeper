@@ -17,7 +17,7 @@ router.post(
     check('name', 'Name is required')
       .not()
       .isEmpty(),
-    check('email', 'Email is either empty or invalid').isEmail(),
+    check('email', 'Email is eitherr invalid').isEmail(),
     check('password', 'Password is required')
       .not()
       .isEmpty(),

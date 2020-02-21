@@ -9,8 +9,8 @@ const Home = () => {
   const authContext = useContext(AuthContext)
 
   useEffect(() => {
-    // return 401 whenever direct to / which re-render this component
-    // then loaduser dispatch AUTH_ERROR
+    // when the application loads, token is in storage when the page is refreshed
+    // it's not getting removed, but it's not in state (stateless)
     authContext.loadUser()
     // eslint-disable-next-line
   }, [])

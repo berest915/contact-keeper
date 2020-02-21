@@ -77,7 +77,7 @@ const AuthState = (props) => {
         }
 
         dispatch({
-          type: LOGIN_FAIL,
+          type: REGISTER_FAIL,
           payload: errArr
         })
       } else {
@@ -132,7 +132,7 @@ const AuthState = (props) => {
   }
 
   //! logout user
-  const logoutUser = () => {}
+  const logout = () => dispatch({ type: LOGOUT })
 
   //! clear errors
   const clearError = () => dispatch({ type: CLEAR_ERROR })
@@ -148,7 +148,7 @@ const AuthState = (props) => {
         registerUser,
         loadUser,
         loginUser,
-        logoutUser,
+        logout,
         clearError
       }}
     >
