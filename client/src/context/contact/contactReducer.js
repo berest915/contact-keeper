@@ -37,7 +37,6 @@ export default (state, action) => {
       return {
         ...state,
         contacts: [action.payload, ...state.contacts],
-        new1: 'ss',
         filtered:
           state.filtered !== null ? [action.payload, ...state.filtered] : null,
         loading: false
