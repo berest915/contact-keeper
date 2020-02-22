@@ -14,7 +14,7 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case CLEAR_CONTACTS:
-      return{
+      return {
         ...state,
         contacts: null,
         filtered: null,
@@ -22,11 +22,11 @@ export default (state, action) => {
         current: null
       }
     case GET_CONTACTS:
-        return{
-          ...state, 
-          contacts: action.payload,
-          loading: false
-        }
+      return {
+        ...state,
+        contacts: action.payload,
+        loading: false
+      }
     case CONTACT_ERROR:
       return {
         ...state,
@@ -36,24 +36,51 @@ export default (state, action) => {
     case ADD_CONTACT:
       return {
         ...state,
-        contacts: [...state.contacts, action.payload],
+        contacts: [action.payload, ...state.contacts],
+        new1: 'ss',
+        filtered:
+          state.filtered !== null ? [action.payload, ...state.filtered] : null,
         loading: false
       }
+
     case UPDATE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map((contact) =>
-          contact.id === action.payload.id ? action.payload : contact
+          contact._id === action.payload._id ? action.payload : contact
         ),
+        filtered:
+          state.filtered !== null
+            ? state.filtered.map((filteredContact) =>
+                filteredContact._id === action.payload._id
+                  ? action.payload
+                  : filteredContact
+              )
+            : null,
         loading: false
       }
     case DELETE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.filter(
-          (contact) => contact.id !== action.payload
+          (contact) => contact._id !== action.payload._id
         ),
+        filtered:
+          state.filtered !== null
+            ? state.filtered.filter(
+                (filteredContact) => filteredContact._id !== action.payload._id
+              )
+            : null,
         loading: false
+      }
+    case FILTER_CONTACT:
+      return {
+        ...state,
+        filtered: state.contacts.filter((contact) => {
+          const replaceText = action.payload.replace(/[^a-zA-Z0-9_-]/g, '')
+          const regex = new RegExp(`${replaceText}`, 'gi')
+          return contact.name.match(regex) || contact.email.match(regex)
+        })
       }
     case SET_CURRENT:
       return {
@@ -65,14 +92,7 @@ export default (state, action) => {
         ...state,
         current: null
       }
-    case FILTER_CONTACT:
-      return {
-        ...state,
-        filtered: state.contacts.filter((contact) => {
-          const regex = new RegExp(`${action.payload}`, 'gi')
-          return contact.name.match(regex) || contact.email.match(regex)
-        })
-      }
+
     case CLEAR_FILTER:
       return {
         ...state,

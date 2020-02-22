@@ -17,10 +17,10 @@ import {
 
 const ContactState = (props) => {
   const initialState = {
-    contacts: null,   // put null instead of [], to fix initial contactslist is empty returns notify msh
+    contacts: null, // put null instead of [], to fix initial contactslist is empty returns notify msh
     current: null,
     filtered: null,
-    error: null,
+    error: null
   }
   const [state, dispatch] = useReducer(ContactReducer, initialState)
 
@@ -55,12 +55,29 @@ const ContactState = (props) => {
         'Content-Type': 'application/json'
       }
     }
-
     try {
       const res = await axios.post('/api/contacts', contact, config)
       dispatch({
         type: ADD_CONTACT,
         payload: res.data
+      })
+    } catch (err) {
+      console.log(err)
+      //todo fix all contacterror in all fn
+      // dispatch({
+      //   type: CONTACT_ERROR,
+      //   payload: err.response.msg
+      // })
+    }
+  }
+
+  // delete contact
+  const deleteContact = async (contact) => {
+    try {
+      await axios.delete(`/api/contacts/${contact._id}`)
+      dispatch({
+        type: DELETE_CONTACT,
+        payload: contact
       })
     } catch (err) {
       dispatch({
@@ -69,13 +86,30 @@ const ContactState = (props) => {
       })
     }
   }
-
-  // delete contact
-  const deleteContact = (id) => {
-    dispatch({
-      type: DELETE_CONTACT,
-      payload: id
-    })
+  // update contact
+  const updateContact = async (contact) => {
+    const config = {
+      // Since headers.common[x-auth-token] is called if token in LS, noneed to set at here for body
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    try {
+      const res = await axios.put(
+        `/api/contacts/${contact._id}`,
+        contact,
+        config
+      )
+      dispatch({
+        type: UPDATE_CONTACT,
+        payload: res.data
+      })
+    } catch (err) {
+      dispatch({
+        type: CONTACT_ERROR,
+        payload: err.response.msg
+      })
+    }
   }
   // set current contact
   const setCurrent = (contact) => {
@@ -90,13 +124,7 @@ const ContactState = (props) => {
       type: CLEAR_CURRENT
     })
   }
-  // update contact
-  const updateContact = (contact) => {
-    dispatch({
-      type: UPDATE_CONTACT,
-      payload: contact
-    })
-  }
+
   // filter contact
   const filterContact = (text) => {
     dispatch({
@@ -118,6 +146,7 @@ const ContactState = (props) => {
         current: state.current,
         filtered: state.filtered,
         error: state.error,
+
         getContacts,
         clearContacts,
         addContact,

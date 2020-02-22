@@ -5,16 +5,14 @@ import AuthContext from '../../context/auth/authContext'
 const Register = (props) => {
   const alertContext = useContext(AlertContext)
   const authContext = useContext(AuthContext)
-  const { registerUser, isAuth, clearError, error } = authContext
+  const { registerUser, isAuth, clearError, error, loadUser } = authContext
   const { setAlert } = alertContext
-  if(localStorage.token){
-    props.history.push('/')
-    }
 
   useEffect(() => {
+    if (localStorage.token) {
+      loadUser()
+    }
     if (isAuth) {
-      
-        
       // redirect
       props.history.push('/')
     }

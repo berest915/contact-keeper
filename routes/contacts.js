@@ -80,7 +80,7 @@ router.put('/:id', auth, async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
         return res
             .status(400)
-            .json({ msg: 'params id not in valid format with _id' })
+            .json({ errors: ['params id not in valid format with _id'] })
     }
 
     let contact = await Contact.findById(req.params.id) //* like qSelector(#id) and it consists user(the refer: users)
@@ -92,7 +92,7 @@ router.put('/:id', auth, async (req, res) => {
         //! ensure user owns the contact
         //* req.user.id from jwt compare with contact.refer
         if (contact.user.toString() !== req.user.id) {
-            return res.status(401).json({ msg: 'not Authorized' })
+            return res.status(401).json({ erros: ['not Authorized'] })
         }
 
         //! build contact object

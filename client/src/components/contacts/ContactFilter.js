@@ -3,7 +3,7 @@ import ContactContext from '../../context/contact/contactContext'
 
 const ContactFilter = () => {
   const { filterContact, clearFilter, filtered } = useContext(ContactContext)
-
+ 
   const text = useRef('')
 
   useEffect(() => {
