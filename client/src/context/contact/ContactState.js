@@ -20,7 +20,7 @@ const ContactState = (props) => {
     contacts: null,   // put null instead of [], to fix initial contactslist is empty returns notify msh
     current: null,
     filtered: null,
-    error: null
+    error: null,
   }
   const [state, dispatch] = useReducer(ContactReducer, initialState)
 

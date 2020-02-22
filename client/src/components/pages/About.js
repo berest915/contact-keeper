@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import authContext from '../../context/auth/authContext'
 
 const About = () => {
+  const { loadUser } = useContext(authContext)
+
+  useEffect(() => {
+    if (localStorage.token) {
+      loadUser()
+    }
+  }, [])
+
   return (
     <div>
       <h1>About this App</h1>

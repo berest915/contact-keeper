@@ -12,6 +12,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERROR
+
 } from '../types'
 
 const AuthState = (props) => {
@@ -23,6 +24,8 @@ const AuthState = (props) => {
     error: null
   }
   const [state, dispatch] = useReducer(AuthReducer, initialState)
+
+
 
   //! load user - get logged in user
   const loadUser = async () => {

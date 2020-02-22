@@ -7,13 +7,13 @@ const Login = (props) => {
   const authContext = useContext(AuthContext)
 
   const { setAlert } = alertContext
-  const { loginUser, isAuth, clearError, error } = authContext
+  const { loginUser, isAuth, clearError, error, loadUser } = authContext
 
-  if(localStorage.token){
-    props.history.push('/')
-    }
 
   useEffect(() => {
+    if (localStorage.token) {
+      loadUser()
+    }
     if (isAuth) {
       // redirect
       props.history.push('/')
@@ -42,7 +42,7 @@ const Login = (props) => {
     if (email === '') {
       setAlert('please fill in the fields', 'danger')
     } else {
-      console.log('login server');
+      console.log('login server')
       loginUser({
         email,
         password
@@ -74,7 +74,7 @@ const Login = (props) => {
             name="password"
             value={password}
             onChange={onChange}
-            minLength = '5'
+            minLength="5"
             required
           />
         </div>

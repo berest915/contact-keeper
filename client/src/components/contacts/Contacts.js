@@ -15,7 +15,6 @@ const Contacts = () => {
   }, [])
 
   if (contacts !== null && contacts.length === 0 && !loading) {
-  // if (contacts !== null && contacts.length === 0) {
     return <h4>Contact-List is empty. You might wanna add some instead?</h4>
   }
 
