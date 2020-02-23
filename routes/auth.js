@@ -10,16 +10,16 @@ const config = require('config')
 const auth = require('../middleware/auth')
 
 // @route   GET api/auth
-// @desc    get logged-in-user
+// @desc    load user if token
 // @access  private
 router.get('/', auth, async (req, res) => {
   try {
     //! exclude password even it is encrypted
-    const user = await User.findById(req.user.id).select('-password')
+    const user =  await User.findById(req.user.id).select('-password')
     res.json(user)
   } catch (err) {
+    console.log('ERROR => LOAD LOGGED-IN USER')
     console.error(err.message)
-    // * is error message precise?
     res.status(500).send('server error')
   }
 })

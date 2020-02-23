@@ -9,6 +9,7 @@ export default () => {
     if (localStorage.token) {
       loadUser()
     }
+    // eslint-disable-next-line
   }, [])
 
   return (

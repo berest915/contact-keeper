@@ -2,8 +2,8 @@ import React, { useContext, useRef, useEffect } from 'react'
 import ContactContext from '../../context/contact/contactContext'
 
 const ContactFilter = () => {
-  const { filterContact, clearFilter, filtered } = useContext(ContactContext)
- 
+  const { filterContact, clearFilter, filtered} = useContext(ContactContext)
+
   const text = useRef('')
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const ContactFilter = () => {
     } else {
       clearFilter()
     }
-  }
+  } 
 
   return (
     <form>

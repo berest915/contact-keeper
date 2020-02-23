@@ -27,7 +27,7 @@ const AuthState = (props) => {
 
 
 
-  //! load user - get logged in user
+  //! load user 
   const loadUser = async () => {
     // default headers
     if (localStorage.token) {

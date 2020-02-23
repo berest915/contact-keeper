@@ -37,10 +37,7 @@ router.post(
       if (user) {
         return res.status(400).json({ errors: ['email already exist'] })
       }
-
       user = new User({ name, email, password })
-      // console.log(user.date)
-      // console.log(user.date.toString())
 
       const salt = await bcrypt.genSalt(10)
       user.password = await bcrypt.hash(password, salt)
