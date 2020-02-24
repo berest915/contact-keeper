@@ -2,13 +2,9 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-// require('dotenv').config()
 //! access user_validate_schema
-// const config = require('config') // get mongoURI
 const User = require('../models/User')
-// const { check, validationResult } = require('express-validator')
-const { check, validationResult } = require('express-validator/check')
-
+const { check, validationResult } = require('express-validator')
 
 // @route   POST api/users
 // @desc    register a user

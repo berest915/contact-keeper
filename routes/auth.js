@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken')
 //! access user_validate_schema
 const User = require('../models/User')
 const { check, validationResult } = require('express-validator')
-const config = require('config')
 //! Authentication middleware
 const auth = require('../middleware/auth')
 // const dot = require('dotenv').config()

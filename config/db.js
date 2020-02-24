@@ -1,7 +1,5 @@
 // use mongoose to connect to db
 const mongoose = require('mongoose')
-const config = require('config')
-require('dotenv').config()
 //* config.get({ any_requiredParameter_from( "./" ) })
 
 const connectDB = async () => {

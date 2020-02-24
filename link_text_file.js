@@ -30,12 +30,12 @@
 //  git push heroku master
 //  heroku open
 
-//? https://apassionatechie.wordpress.com/2018/01/24/heroku-couldnt-find-that-app/
+//? rename apps domain name 
 //  heroku apps:rename newname  --app oldname  
-//  heroku git:remote -a newRemote
 
-//? change remote
+//? edit remote 
 //  git remote -v
+//  heroku git:remote -a newRemote
 //  git remote remove {remoteVar}
 //  git remote add -m --master {addVar} {GithubRemoteLink}
 //  heroku remote remove {remote, default is heroku}
