@@ -37,9 +37,9 @@
 //? change remote
 //  git remote -v
 //  git remote remove {remoteVar}
-//  git remote add -m --master {GithubRemoteLink}
+//  git remote add -m --master {addVar} {GithubRemoteLink}
 //  heroku remote remove {remote, default is heroku}
 //  heroku git:remote -a {newRemoteRoute}
-//  
+//  git push {var} {branch}
 
 //?  https://www.npmjs.com/package/dotenv

@@ -9,5 +9,5 @@ node_modules/
 /client/.env.test.local
 /client/.env.production.local
 .DS_Store
-/.env
+.env
 
