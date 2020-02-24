@@ -20,10 +20,10 @@
 
 
 //! deploy to heroku
-//? https://devcenter.heroku.com/articles/git
+//? https://devcenter.heroku.com/articles/heroku-cli
 //  heroku --version
 //  heroku login
-//  heroku create
+//  heroku create   ||    heroku create theName
 //  git init
 //  git add .
 //  git commit -m 'your-commit-msg'
