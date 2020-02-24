@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
     try {
         //! extract payload
         //* in production, the jwtSecret should be random-generated string || customised ?
-        const decoded = jwt.verify(token, config.get('jwtSecret'))
+        const decoded = jwt.verify(token, process.env.JWT_SECRET`)
         //! only extract user into req.user
         req.user = decoded.user
         next()

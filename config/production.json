@@ -1,4 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://tuna:tuna@contact-keeper-wygdz.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "secret"
-}

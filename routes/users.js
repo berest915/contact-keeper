@@ -3,7 +3,7 @@ const router = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 //! access user_validate_schema
-const config = require('config') // get mongoURI
+// const config = require('config') // get mongoURI
 const User = require('../models/User')
 const { check, validationResult } = require('express-validator')
 
@@ -48,7 +48,7 @@ router.post(
       const payload = { user: { id: user.id } }
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        process.env.JWT_SECRET,
         {
           expiresIn: 720000
         },
