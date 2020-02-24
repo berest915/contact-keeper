@@ -29,3 +29,4 @@
 //  git commit -m 'your-commit-msg'
 //  git push heroku master
 //  heroku open
+//  heroku apps:rename newname  --app oldname  
