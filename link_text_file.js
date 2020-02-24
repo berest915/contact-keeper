@@ -19,4 +19,13 @@
 //? https://docs.mongodb.com/manual/reference/method/db.collection.save/
 
 
-
+//! deploy to heroku
+//? https://devcenter.heroku.com/articles/git
+//  heroku --version
+//  heroku login
+//  heroku create
+//  git init
+//  git add .
+//  git commit -m 'your-commit-msg'
+//  git push heroku master
+//  heroku open
