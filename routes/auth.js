@@ -8,6 +8,7 @@ const { check, validationResult } = require('express-validator')
 const config = require('config')
 //! Authentication middleware
 const auth = require('../middleware/auth')
+// const dot = require('dotenv').config()
 
 // @route   GET api/auth
 // @desc    load user if token

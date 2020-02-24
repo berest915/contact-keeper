@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+// require('dotenv').config()
 //! access user_validate_schema
 // const config = require('config') // get mongoURI
 const User = require('../models/User')
