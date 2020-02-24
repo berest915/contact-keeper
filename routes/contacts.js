@@ -4,7 +4,9 @@ const auth = require('../middleware/auth')
 //! access user_validate_schema
 const User = require('../models/User')
 const Contact = require('../models/Contact')
-const { check, validationResult } = require('express-validator')
+// const { check, validationResult } = require('express-validator')
+const { check, validationResult } = require('express-validator/check')
+
 //! to check id format
 const mongoose = require('mongoose')
 

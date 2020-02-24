@@ -3,6 +3,7 @@ const app = express()
 const connectDB = require('./config/db')
 const path = require('path')
 require('dotenv').config()
+process.env.NODE_CONFIG_DIR = './config'
 
 //! connect database
 connectDB()

@@ -5,6 +5,7 @@ require('dotenv').config()
 //* config.get({ any_requiredParameter_from( "./" ) })
 
 const connectDB = async () => {
+  process.env.NODE_CONFIG_DIR = './config'
   try {
     const db = process.env.MONGO_URI
     await mongoose.connect(db, {
