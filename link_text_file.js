@@ -32,4 +32,5 @@
 
 //? https://apassionatechie.wordpress.com/2018/01/24/heroku-couldnt-find-that-app/
 //  heroku apps:rename newname  --app oldname  
-//  heroku git:remote -a rest-credtmedia-contact
+//  heroku git:remote -a newRemote
+//  https://www.npmjs.com/package/dotenv
