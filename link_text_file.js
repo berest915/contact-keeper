@@ -43,3 +43,7 @@
 //  git push {var} {branch}
 
 //?  https://www.npmjs.com/package/dotenv
+
+//? modify .gitignore
+// git rm --cached -r .
+// git add .
