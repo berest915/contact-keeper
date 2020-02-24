@@ -33,4 +33,10 @@
 //? https://apassionatechie.wordpress.com/2018/01/24/heroku-couldnt-find-that-app/
 //  heroku apps:rename newname  --app oldname  
 //  heroku git:remote -a newRemote
-//  https://www.npmjs.com/package/dotenv
+
+//? change remote
+//  git remote -v
+//  heroku remote remove {remote, default is heroku}
+//  heroku git:remote -a {newRemoteRoute}
+
+//?  https://www.npmjs.com/package/dotenv
